@@ -18,7 +18,7 @@ services:
     build:
       context: ./src/ContactsWeb
       dockerfile: Dockerfile
-      container_name: contacts_web
+    container_name: contacts_web
     depends_on:
       postgres:
         condition: service_healthy
