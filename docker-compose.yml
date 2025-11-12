@@ -1,10 +1,7 @@
-version: "3.9"
-
 services:
   postgres:
     image: postgres:17-alpine
-    container_name: contacts-postgres
-    restart: unless-stopped
+    container_name: contacts_postgres
     environment:
       POSTGRES_DB: contactsdb
       POSTGRES_USER: postgres
@@ -17,32 +14,27 @@ services:
       timeout: 5s
       retries: 5
 
-  api:
+  web:
     build:
-      context: ./src/ContactsApi
+      context: ./src/ContactsWeb
       dockerfile: Dockerfile
-    image: contactsapi:latest
-    container_name: contacts-api
+    container_name: contacts_web
     depends_on:
       postgres:
         condition: service_healthy
     environment:
-      ASPNETCORE_ENVIRONMENT: Production
       ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=contactsdb;Username=postgres;Password=postgres"
-    ports:
-      - "5000:5000"
     restart: unless-stopped
-
 
   nginx:
     image: nginx:alpine
-    container_name: contacts-nginx
+    container_name: contacts_nginx
     ports:
       - "8080:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/nginx.conf:ro
     depends_on:
-      - api
+      - web
     restart: unless-stopped
 
 volumes:

@@ -1,0 +1,7 @@
+body { background-color: #f9f9f9; font-family: "Segoe UI", Arial, sans-serif; }
+.container { max-width: 700px; }
+
+/* Small tweaks to work well with Bootstrap */
+body { padding-top: 0.25rem; }
+.navbar-brand { font-weight: 600; }
+
