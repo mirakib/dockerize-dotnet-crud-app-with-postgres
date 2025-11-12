@@ -18,8 +18,8 @@ services:
 
   api:
     build:
-      context: .
-      dockerfile: src/ContactsApi/Dockerfile
+      context: ./src/ContactsApi
+      dockerfile: Dockerfile
     image: contactsapi:latest
     depends_on:
       postgres:
@@ -30,6 +30,7 @@ services:
     ports:
       - "5000:5000"
     restart: unless-stopped
+
 
   nginx:
     image: nginx:alpine
