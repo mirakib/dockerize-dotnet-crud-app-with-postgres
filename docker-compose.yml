@@ -3,6 +3,7 @@ version: "3.9"
 services:
   postgres:
     image: postgres:17-alpine
+    container_name: contacts-postgres
     restart: unless-stopped
     environment:
       POSTGRES_DB: contactsdb
@@ -21,6 +22,7 @@ services:
       context: ./src/ContactsApi
       dockerfile: Dockerfile
     image: contactsapi:latest
+    container_name: contacts-api
     depends_on:
       postgres:
         condition: service_healthy
@@ -34,6 +36,7 @@ services:
 
   nginx:
     image: nginx:alpine
+    container_name: contacts-nginx
     ports:
       - "8080:80"
     volumes:
