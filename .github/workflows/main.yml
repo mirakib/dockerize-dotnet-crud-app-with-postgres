@@ -25,6 +25,7 @@ jobs:
 
       - name: Build
         run: dotnet build --configuration Release --no-restore
+        working-directory: ./src/ContactsWeb
 
       - name: Run Tests
         run: dotnet test --no-restore --verbosity normal
