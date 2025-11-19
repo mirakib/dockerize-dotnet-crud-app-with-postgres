@@ -6,6 +6,8 @@
 
 A lightweight, production-ready CRUD web application built using `ASP.NET Core (.NET 10)`, `PostgreSQL`, and `Nginx` as a reverse proxy — all containerized with Docker and Docker Compose.
 
+**Note: A version of the project in Traefik can be found here:** [DotNet CRUD App with PostgreSQL and Traefik](https://github.com/mirakib/dockerize-dotnet-app-with-postgres-and-traefik)
+
 ## Features
 - Full CRUD functionality for managing contacts
 - Responsive UI built with Bootstrap
